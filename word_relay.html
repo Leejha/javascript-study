@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div> <span id = 'order'>1</span> 번째 참가자</div>
+    <div>제시어: <span id = 'word' ></span> </div>
+    <input type="text">
+    <button>입력</button>
+
+
+    <script>
+		const number = Number(prompt('몇명이 참가할건가요?'));	
+		
+		if (number) {
+			const $order = document.querySelector('#order');
+			const $input = document.querySelector('input');	
+			const $word = document.querySelector('#word');
+
+			let word;
+
+			$input.addEventListener('input', (e) => {
+				word = e.target.value;
+			})
+
+			document.querySelector('button').addEventListener('click', () => {
+				if (!$word.textContent || $word.textContent[$word.textContent.length -1] === word[0]) {
+					$word.textContent = word;
+
+					if (Number($order.textContent)+1 > number) {
+						$order.textContent = 1;
+					}
+					else {
+						$order.textContent = Number($order.textContent)+1;
+					}
+				}
+				else {
+					alert('틀림');
+				}
+				}
+				$input.value = '';
+				$input.focus();
+			})			
+		}
+
+		
+	
+
+    </script>
+</body>
+</html>   
